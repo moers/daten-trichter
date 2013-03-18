@@ -91,7 +91,7 @@
       <hr>
 
       <div class="footer">
-        <p>&copy; Moers 2013</p>
+        <p>&copy; <a href="http://github.com/moers" target="_blank">Moers</a> 2013, Formularentwurf: <a href="http://creativecommons.org/licenses/by/3.0/at/" target="_blank">CC-BY 3.0</a> <a href="http://www.kdz.eu/de/open-government-vorgehensmodell" target="_blank">KDZ, Open Government Vorgehensmodell</a></p>
       </div>
 
     </div> <!-- /container -->
@@ -137,7 +137,7 @@
     <div class="row-fluid">
       <form class="form-horizontal">
         <div class="control-group">
-          <label class="control-label">Name</label>
+          <label class="control-label">Name des Datensatzes</label>
           <div class="controls">
             {{view Ember.TextField valueBinding="content.name"}}
           </div>
@@ -161,7 +161,7 @@
           </div>
         </div>
         <div class="control-group">
-          <label class="control-label">URL</label>
+          <label class="control-label">URL zum bereits veröffentlichtem Dokument</label>
           <div class="controls">
             {{view Ember.TextField valueBinding="content.url"}}
           </div>
@@ -180,6 +180,14 @@
           </div>
         </div>
         <hr>
+        <div class="row-fluid">
+          <div class="span4 offset3">
+            <b>Bewertung</b>
+          </div>
+          <div class="span2">
+            <b>Gewichtung</b>
+          </div>
+        </div>
         <div class="control-group">
           <label class="control-label">Geheimhaltung / rechtliche Hindernisse</label>
           <div class="controls">
@@ -323,8 +331,9 @@
             <span class="help-block">Summe aller Einzelbewertungen. Sollten einzelne Kriterien mit 0 bewertet werden, so sind das Ausschließungsgründe für eine Veröffentlichung.</span>
           </div>
         </div>
-        
-        <button class="btn" {{action save this}}><i class="icon-file"></i> Speichern</button>
+        <div class="form-actions">
+          <button class="btn btn-primary" {{action save this}}><i class="icon-file icon-white"></i> Speichern</button>
+        </div>
       </form>
     </div>
     </script>

@@ -1,0 +1,17 @@
+{
+  "name": "datamonitoring",
+  "version": "0.0.0",
+  "main": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "ember": "~1.0.0-rc.1",
+    "bootstrap": "~2.3.1",
+    "pouchdb-nightly": "http://download.pouchdb.com/pouchdb-nightly.js",
+    "ember-data": "latest",
+    "ember-localstorage-adapter": "latest"
+  }
+}

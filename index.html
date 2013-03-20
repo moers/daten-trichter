@@ -84,7 +84,6 @@
       <div class="jumbotron">
         <h1>Daten-Trichter!</h1>
         <p class="lead">Datenmonitoring auf dem einfachen Weg. Schmeiß die Daten in den  Trichter!</p>
-        <!--<a class="btn btn-large btn-success" href="#">Sign up today</a>-->
       </div>
 
       <hr>
@@ -384,14 +383,20 @@
         </div>
         <div class="form-actions">
           <button class="btn btn-primary" {{action save this}}><i class="icon-file icon-white"></i> Speichern</button>
+          <button class="btn" {{action cancel this}}><i class="icon-remove"></i> Abbrechen</button>
         </div>
       </form>
     </div>
     </script>
     
     <script type="text/x-handlebars" data-template-name="data/export">
-    <buttom class="btn" {{action exportJson this}}><i class="icon-download"></i> Export</buttom>
-    <buttom class="btn" {{action importJson this}}><i class="icon-upload"></i> Import</buttom>
+    <div class="row-fluid">
+      <div class="span12">
+        <p>Exportiert den gesamten Datenbestand.</p>
+        <buttom class="btn" {{action exportJson this}}><i class="icon-download"></i> Export</buttom>
+        <buttom class="btn" {{action importJson this}}><i class="icon-upload"></i> Import</buttom>
+      </div>
+    </div>
     </script>
     
     <!-- Le javascript

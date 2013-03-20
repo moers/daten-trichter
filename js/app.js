@@ -74,6 +74,10 @@ App.DataEditController = Ember.Controller.extend({
   save: function(router, event) {
     App.store.commit();
     router.transitionToRoute('data')
+  },
+  cancel: function(router) {
+    router.get("content").deleteRecord();
+    router.transitionToRoute('data')
   }
 })
 

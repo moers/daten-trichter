@@ -109,12 +109,18 @@ App.DataShowView = Ember.View.extend({
 })
 
 App.DataEditView = Ember.View.extend({
-  layoutName: "index"
+  layoutName: "index",
+  templateName: "data/edit",
+  didInsertElement: function() {
+    this._super();
+    $("a[data-toggle=popover]").popover().click(function(e) {
+      e.preventDefault();
+    });
+  }
 })
 
-App.DataNewView = Ember.View.extend({
-  layoutName: "index",
-  templateName: "data/edit"
+App.DataNewView = App.DataEditView.extend({
+  
 })
 
 App.DataExportView = Ember.View.extend({

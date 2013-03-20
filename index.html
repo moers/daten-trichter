@@ -64,12 +64,16 @@
   <body>
     
     <script type="text/x-handlebars" data-template-name="index">
-    <div class="container-narrow">
+    <div class="container">
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
           <li>{{#linkTo "index"}}Datenliste{{/linkTo}}</li>
-          <li>{{#linkTo "data.new"}}Neuer Datensatz{{/linkTo}}</li>
+          <li>
+          {{#linkTo "data.new"}}
+            Neuer Datensatz
+          {{/linkTo}}
+          </li>
           <li>{{#linkTo "data.export"}}Exportieren{{/linkTo}}</li>
         </ul>
         <h3 class="muted">Daten-Trichter</h3>
@@ -146,6 +150,7 @@
           <label class="control-label">Primärquelle</label>
           <div class="controls">
             {{view Ember.Checkbox checkedBinding="content.primarySource"}}
+            <span class="help-block">Die Daten werden von der Verwaltung an ihrem Ursprung gesammelt und veröffentlicht. Dies geschieht mit dem höchstmöglichen Feinheitsgrad, nicht in aggregierten oder sonst wie modifizierten Formaten.</span>
           </div>
         </div>
         <div class="control-group">
@@ -177,157 +182,203 @@
           <label class="control-label">Geplantes Veröffentlichungsdatum</label>
           <div class="controls">
             {{view Ember.TextField valueBinding="content.releaseData" type="datetime"}}
+            <span class="help-block">Format: YYYY-MM-DD (Beispiel: 2013-03-20)</span>
           </div>
         </div>
         <hr>
-        <div class="row-fluid">
-          <div class="span4 offset3">
-            <b>Bewertung</b>
-          </div>
-          <div class="span2">
-            <b>Gewichtung</b>
+        <div class="control-group">
+          <div class="controls">
+            <div class="span4">
+              <b>Bewertung</b>
+            </div>
+            <div class="span2">
+              <b>Gewichtung</b>
+            </div>
+            <div class="span1">
+              <b>Bewertung</b>
+            </div>
           </div>
         </div>
         <div class="control-group">
           <label class="control-label">Geheimhaltung / rechtliche Hindernisse</label>
-          <div class="controls">
+          <div class="controls controls-row">
             {{view Ember.Select 
                    contentBinding="App.CriteriaDescriptions.nondisclosure"
                    optionValuePath="content.id"
                    optionLabelPath="content.text"
-                   valueBinding="content.nondisclosureCriteria"}}
+                   valueBinding="content.nondisclosureCriteria"
+                   class="span4"}}
             {{view Ember.Select class="input-small"
                    contentBinding="App.EvaluationDescriptions"
                    optionValuePath="content.id"
                    optionLabelPath="content.text"
-                   valueBinding="content.nondisclosureEvaluation"}}
-            <b>{{content.nondisclosure}}</b>
-            <span class="help-block">Unterliegen die Daten Geheimhaltungspflichten oder sonstigen rechtlichen Beschränkungen bzw. handelt es sich um infrastrukturkritische Daten?</span>
+                   valueBinding="content.nondisclosureEvaluation"
+                   class="span2"}}
+            <p class="span1">{{content.nondisclosure}}</p>
+          </div>
+          <div class="controls controls-row">
+            <p class="help-block">Unterliegen die Daten Geheimhaltungspflichten oder sonstigen rechtlichen Beschränkungen bzw. handelt es sich um infrastrukturkritische Daten?</p>
           </div>
         </div>
         <div class="control-group">
           <label class="control-label">Person- oder Unternehmensbezug</label>
-          <div class="controls">
+          <div class="controls controls-row">
             {{view Ember.Select 
                    contentBinding="App.CriteriaDescriptions.privacy"
                    optionValuePath="content.id"
                    optionLabelPath="content.text"
-                   valueBinding="content.privacyCriteria"}}
+                   valueBinding="content.privacyCriteria"
+                   class="span4"}}
             {{view Ember.Select class="input-small"
                    contentBinding="App.EvaluationDescriptions"
                    optionValuePath="content.id"
                    optionLabelPath="content.text"
-                   valueBinding="content.privacyEvaluation"}}
-            <b>{{content.privacy}}</b>
-            <span class="help-block">Handelt es sich um personenbezogene Daten bzw. lassen sich Rückschlüsse auf Personen oder Unternehmen daraus ableiten?</span>
+                   valueBinding="content.privacyEvaluation"
+                   class="span2"}}
+            <p class="span1">{{content.privacy}}</p>
+          </div>
+          <div class="controls controls-row">
+            <p class="help-block">Handelt es sich um personenbezogene Daten bzw. lassen sich Rückschlüsse auf Personen oder Unternehmen daraus ableiten?</p>
           </div>
         </div>
         <div class="control-group">
           <label class="control-label">Nutzungsrecht</label>
-          <div class="controls">
+          <div class="controls controls-row">
             {{view Ember.Select 
                    contentBinding="App.CriteriaDescriptions.servitude"
                    optionValuePath="content.id"
                    optionLabelPath="content.text"
-                   valueBinding="content.servitudeCriteria"}}
+                   valueBinding="content.servitudeCriteria"
+                   class="span4"}}
             {{view Ember.Select class="input-small"
                    contentBinding="App.EvaluationDescriptions"
                    optionValuePath="content.id"
                    optionLabelPath="content.text"
-                   valueBinding="content.servitudeEvaluation"}}
-            <b>{{content.servitude}}</b>
-            <span class="help-block">Besitzt die Verwaltung das alleinige Nutzungsrecht der Daten?</span>
+                   valueBinding="content.servitudeEvaluation"
+                   class="span2"}}
+            <p class="span1">{{content.servitude}}</p>
+          </div>
+          <div class="controls controls-row">
+            <p class="help-block">Besitzt die Verwaltung das alleinige Nutzungsrecht der Daten?</p>
           </div>
         </div>
         <div class="control-group">
           <label class="control-label">Nutzen</label>
-          <div class="controls">
+          <div class="controls controls-row">
             {{view Ember.Select 
                    contentBinding="App.CriteriaDescriptions.utility"
                    optionValuePath="content.id"
                    optionLabelPath="content.text"
-                   valueBinding="content.utilityCriteria"}}
+                   valueBinding="content.utilityCriteria"
+                   class="span4"}}
             {{view Ember.Select class="input-small"
                    contentBinding="App.EvaluationDescriptions"
                    optionValuePath="content.id"
                    optionLabelPath="content.text"
-                   valueBinding="content.utilityEvaluation"}}
-            <b>{{content.utility}}</b>
-            <span class="help-block">Wie hoch wird der Nutzen für alle Zielgruppen eingeschätzt?</span>
+                   valueBinding="content.utilityEvaluation"
+                   class="span2"}}
+            <p class="span1">{{content.utility}}</p>
+          </div>
+          <div class="controls controls-row">
+            <p class="help-block">Wie hoch wird der Nutzen für alle Zielgruppen eingeschätzt?</p>
           </div>
         </div>
         <div class="control-group">
           <label class="control-label">Aufwand</label>
-          <div class="controls">
+          <div class="controls controls-row">
             {{view Ember.Select 
                    contentBinding="App.CriteriaDescriptions.effort"
                    optionValuePath="content.id"
                    optionLabelPath="content.text"
-                   valueBinding="content.effortCriteria"}}
+                   valueBinding="content.effortCriteria"
+                   class="span4"}}
             {{view Ember.Select class="input-small"
                    contentBinding="App.EvaluationDescriptions"
                    optionValuePath="content.id"
                    optionLabelPath="content.text"
-                   valueBinding="content.effortEvaluation"}}
-            <b>{{content.effort}}</b>
-            <span class="help-block">Wie hoch ist der Aufwand für die Veröffentlichung?</span>
+                   valueBinding="content.effortEvaluation"
+                   class="span2"}}
+            <p  class="span1">{{content.effort}}</p>
+          </div>
+          <div class="controls controls-row">
+            <p class="help-block">Wie hoch ist der Aufwand für die Veröffentlichung?</p>
           </div>
         </div>
         <div class="control-group">
           <label class="control-label">Inhaltliche Datenqualität</label>
-          <div class="controls">
+          <div class="controls controls-row">
             {{view Ember.Select 
                    contentBinding="App.CriteriaDescriptions.quality"
                    optionValuePath="content.id"
                    optionLabelPath="content.text"
-                   valueBinding="content.qualityCriteria"}}
+                   valueBinding="content.qualityCriteria"
+                   class="span4"}}
             {{view Ember.Select class="input-small"
                    contentBinding="App.EvaluationDescriptions"
                    optionValuePath="content.id"
                    optionLabelPath="content.text"
-                   valueBinding="content.qualityEvaluation"}}
-            <b>{{content.quality}}</b>
-            <span class="help-block">Wie hoch wird die Datenqualität eingeschätzt? (Vollständigkeit, zeitliche Nähe, Genauigkeit, Fehlerhaftigkeit,...)</span>
+                   valueBinding="content.qualityEvaluation"
+                   class="span2"}}
+            <p class="span1">{{content.quality}}</p>
+          </div>
+          <div class="controls controls-row">
+            <p class="help-block">Wie hoch wird die Datenqualität eingeschätzt? (Vollständigkeit, zeitliche Nähe, Genauigkeit, Fehlerhaftigkeit,...)</p>
           </div>
         </div>
         <div class="control-group">
           <label class="control-label">Technische Verfügbarkeit</label>
-          <div class="controls">
+          <div class="controls controls-row">
             {{view Ember.Select 
                    contentBinding="App.CriteriaDescriptions.availability"
                    optionValuePath="content.id"
                    optionLabelPath="content.text"
-                   valueBinding="content.availabilityCriteria"}}
+                   valueBinding="content.availabilityCriteria"
+                   class="span4"}}
             {{view Ember.Select class="input-small"
                    contentBinding="App.EvaluationDescriptions"
                    optionValuePath="content.id"
                    optionLabelPath="content.text"
-                   valueBinding="content.availabilityEvaluation"}}
-            <b>{{content.availability}}</b>
+                   valueBinding="content.availabilityEvaluation"
+                   class="span2"}}
+            <p class="span1">{{content.availability}}</p>
+          </div>
+          <div class="controls controls-row">
             <span class="help-block">Verfügbare Datenformate und Datenquellen, offene Standards: OGD-Formate, Erweitertes 5-Sterne-Modell</span>
           </div>
         </div>
         <div class="control-group">
           <label class="control-label">Synergie</label>
-          <div class="controls">
+          <div class="controls controls-row">
             {{view Ember.Select 
                    contentBinding="App.CriteriaDescriptions.synergy"
                    optionValuePath="content.id"
                    optionLabelPath="content.text"
-                   valueBinding="content.synergyCriteria"}}
+                   valueBinding="content.synergyCriteria"
+                   class="span4"}}
             {{view Ember.Select class="input-small"
                    contentBinding="App.EvaluationDescriptions"
                    optionValuePath="content.id"
                    optionLabelPath="content.text"
-                   valueBinding="content.synergyEvaluation"}}
-            <b>{{content.synergy}}</b>
-            <span class="help-block">Werden Daten/Dienste bereits anderweitig von der Verwaltung angeboten?</span>
+                   valueBinding="content.synergyEvaluation"
+                   class="span2"}}
+            <p class="span1">{{content.synergy}}</p>
+          </div>
+          <div class="controls controls-row">
+            <p class="help-block">Werden Daten/Dienste bereits anderweitig von der Verwaltung angeboten?</p>
           </div>
         </div>
         <div class="control-group">
           <label class="control-label">Bewertung</label>
           <div class="controls">
-            <b>{{content.sum}}</b>
+            {{#if content.valid}}
+            <span class="badge badge-success">
+              {{content.sum}}
+            </span>
+            {{else}}
+            <span class="badge badge-important">
+              {{content.sum}}
+            </span>
+            {{/if}}
             <span class="help-block">Summe aller Einzelbewertungen. Sollten einzelne Kriterien mit 0 bewertet werden, so sind das Ausschließungsgründe für eine Veröffentlichung.</span>
           </div>
         </div>

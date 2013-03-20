@@ -78,5 +78,10 @@ App.Data = DS.Model.extend({
     }
     
     return sum;
-  }.property("nondisclosure", "privacy", "servitude", "utility", "utility", "effort", "quality", "availability", "synergy")
+  }.property("nondisclosure", "privacy", "servitude", "utility", "utility", "effort", "quality", "availability", "synergy"),
+  
+  valid: function() {
+    var sum = this.get("sum");
+    return sum > 0 ? true : false;
+  }.property('sum')
 });

@@ -143,7 +143,7 @@
         <div class="control-group">
           <label class="control-label">Name des Datensatzes</label>
           <div class="controls">
-            {{view Ember.TextField valueBinding="content.name"}}
+            {{view Ember.TextField valueBinding="content.name" class="input-block-level"}}
           </div>
         </div>
         <div class="control-group">
@@ -156,19 +156,19 @@
         <div class="control-group">
           <label class="control-label">Datenbereitsteller</label>
           <div class="controls">
-            {{view Ember.TextArea valueBinding="content.dataProvider"}}
+            {{view Ember.TextArea valueBinding="content.dataProvider" class="input-block-level"}}
           </div>
         </div>
         <div class="control-group">
           <label class="control-label">Kontaktperson</label>
           <div class="controls">
-            {{view Ember.TextField valueBinding="content.contactPerson"}}
+            {{view Ember.TextField valueBinding="content.contactPerson" class="input-block-level"}}
           </div>
         </div>
         <div class="control-group">
           <label class="control-label">URL zum bereits veröffentlichtem Dokument</label>
           <div class="controls">
-            {{view Ember.TextField valueBinding="content.url"}}
+            {{view Ember.TextField valueBinding="content.url" class="input-block-level"}}
           </div>
         </div>
         <div class="control-group">
@@ -181,7 +181,7 @@
         <div class="control-group">
           <label class="control-label">Geplantes Veröffentlichungsdatum</label>
           <div class="controls">
-            {{view Ember.TextField valueBinding="content.releaseData" type="datetime"}}
+            {{view Ember.TextField valueBinding="content.releaseData" type="datetime" class="input-block-level"}}
             <span class="help-block">Format: YYYY-MM-DD (Beispiel: 2013-03-20)</span>
           </div>
         </div>
